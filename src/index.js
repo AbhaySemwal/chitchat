@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ChatContextProvider } from "./context/ChatContext";
+import "./global.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
