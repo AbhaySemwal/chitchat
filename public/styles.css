@@ -2,22 +2,16 @@ body
 {
     font-family: "Montserrat";
 }
-.msgcon{
-    max-width: 80%;
+.scrollbar::-webkit-scrollbar {
+width: 5px;
 }
-.msgcon p{
-    max-width: max-content;
+    
+.scrollbar::-webkit-scrollbar-track { 
+background: #f6f2f2;
+
 }
-.msgcon img{
-    width: 50%
-}
-.owner{
-    flex-direction: row-reverse;
-}
-.owner p{
-    background-color: rgb(0, 212, 212);
-    border-radius: 10px 0 10px 10px;
-}
-.owner .msgcon{
-    align-items: flex-end;
+
+.scrollbar::-webkit-scrollbar-thumb { 
+background:#7f7f7f;
+border-radius: 5px ;
 }

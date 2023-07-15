@@ -1,14 +1,28 @@
-import React from "react";
-function Message(){
+import React, { useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
+function Message({message}){
+
+    const{currentUser}=useContext(AuthContext);
+    const {data}=useContext(ChatContext);
+
+    const ref=useRef();
+
+    useEffect(()=>{
+        ref.current?.scrollIntoView({behaviour:"smooth"});
+    },[message]);
     return(
-        <div className="owner message flex flex-row-reverse gap-2">
-           <div className="messageinfo flex flex-col mb-4">
-            <img className="rounded-full h-8 w-8 object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTixZtt0DenR6hIlRFoGmY60gpxxG6zL1lhj5hIgmOs3TKtGGft6d-pD6G5faaG724JNg0&usqp=CAU" alt=""/>
-            <span className="text-gray-600 text-xs">just now</span>
-            </div>
-            <div className="msgcon flex flex-col gap-4">
-                <p className="max-w-xl rounded-tr-lg rounded-b-lg px-1 py-2 flex text-slate-100">hellocjcjhjhjhsdjhsjdhjsjdjshdjhsjdh</p>
-                <img className="pb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZsEXAyYRoq2Eos7ZWMJ1pKUajAxb2imQhjg&usqp=CAU" alt=""/>
+        <div ref={ref} className={`${message.senderId===currentUser.uid ?"flex flex-row-reverse gap-2" :"flex flex-row gap-2 justify-start"} mb-4`}>
+           {(message.img||(message.text!==""&&message.text!==" "))&&
+           <div className="flex flex-col">
+            <img className="rounded-full h-8 w-8 object-cover" src={message.senderId===currentUser.uid?currentUser.photoURL:data.user.photoURL} alt=""/>
+            <span className="text-gray-600 text-[10px]">{(message.date).toDate().toLocaleTimeString('en-GB').substring(0,5)}</span>
+            </div>}
+            <div className={`${message.senderId===currentUser.uid ?"items-end" :"items-start"} flex flex-col gap-4 w-[80%]`}>
+                {message.text!==""&&message.text!==" "&&
+                <p className={`${message.senderId===currentUser.uid ?"rounded-tl-lg text-slate-50 bg-[#0f915d]" :"bg-white rounded-tr-lg "} min-w-fit max-w-full rounded-b-lg px-1.5 py-1.5 flex`}>{message.text}</p>}
+                {message.img&&
+                <img className={`${message.senderId===currentUser.uid ? "rounded-tl-lg border-[#0f915d]":"rounded-tr-lg border-white"} border-2 border-solid  w-[50%] rounded-b-lg object-cover`} src={message.img} alt=""/>}
             </div>
         </div>
     );
