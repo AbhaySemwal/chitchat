@@ -9,10 +9,10 @@ function Chat(){
     const {data}=useContext(ChatContext);
     return(
         <>
-
+        
         {data.user.displayName?<div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-2 bg-cyan-800 ">
-                <div className="hover:bg-gray-800/80 p-2 h-10 cursor-pointer text-slate-200 flex items-center gap-x-2">
+                <div className="p-2 h-10 cursor-pointer text-slate-200 flex items-center gap-x-2">
                     <img className="rounded-full h-10 w-10 object-cover" src={data?.user.photoURL} alt=""/>
                     <span className="text-sm font-bold">{data.user?.displayName}</span>
                 </div>

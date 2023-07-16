@@ -33,6 +33,7 @@ function Chats(){
                     <span className="text-sm font-bold">{chat[1].userInfo?.displayName}</span>
                     <p className="truncate w-[200px] text-xs text-gray-300">{chat[1].lastMessage?.text}</p>
                 </div>
+                <p className="text-[10px] mb-3">{(chat[1].lastMessage?.time)?.toDate().toLocaleTimeString('en-GB').substring(0,5)}</p>
             </div>
         ))}
         </>
