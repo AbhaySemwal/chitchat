@@ -58,6 +58,7 @@ function Input(){
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [data.chatId + ".lastMessage"]: {
             text:"Image",
+            time:serverTimestamp()
           },
           [data.chatId + ".date"]: serverTimestamp(),
         });
@@ -65,6 +66,7 @@ function Input(){
         await updateDoc(doc(db, "userChats", data.user.uid), {
           [data.chatId + ".lastMessage"]: {
             text:"Image",
+            time:serverTimestamp()
           },
           [data.chatId + ".date"]: serverTimestamp(),
         });
@@ -73,6 +75,7 @@ function Input(){
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [data.chatId + ".lastMessage"]: {
             text,
+            time:serverTimestamp()
           },
           [data.chatId + ".date"]: serverTimestamp(),
         });
@@ -80,6 +83,7 @@ function Input(){
         await updateDoc(doc(db, "userChats", data.user.uid), {
           [data.chatId + ".lastMessage"]: {
             text,
+            time:serverTimestamp()
           },
           [data.chatId + ".date"]: serverTimestamp(),
         });
@@ -88,9 +92,12 @@ function Input(){
     setText("");
     setImg(null);
   };
+  const handleKey = (e) => {
+    e.code === "Enter" && handleSend();
+  };
     return(
         <div className="h-12 p-2 bg-white flex items-center justify-between">
-           <input className="outline-none w-full" type="text"  value={text} onChange={e=>setText(e.target.value)} placeholder="Type a message"/>
+           <input className="outline-none w-full" type="text" onKeyDown={handleKey}  value={text} onChange={e=>setText(e.target.value)} placeholder="Type a message"/>
            <div className="flex items-center gap-x-3">
            <span className="text-gray-600 cursor-pointer"><RiAttachmentLine/></span>
             <input type="file" className="hidden" id="file" onChange={(e) => setImg(e.target.files[0])}/>
