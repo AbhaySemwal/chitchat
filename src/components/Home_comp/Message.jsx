@@ -9,7 +9,7 @@ function Message({message}){
     const ref=useRef();
 
     useEffect(()=>{
-        ref.current?.scrollIntoView({behaviour:"smooth"});
+        ref.current?.scrollIntoView({behavior:"smooth"});
     },[message]);
     return(
         <div ref={ref} className={`${message.senderId===currentUser.uid ?"flex flex-row-reverse gap-2" :"flex flex-row gap-2 justify-start"} mb-4`}>
