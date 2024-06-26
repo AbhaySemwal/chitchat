@@ -4,20 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import {getStorage} from "firebase/storage";
 
 const firebaseConfig = {
-  // apiKey: process.env.APIKEY,
-  // authDomain: process.env.AUTHDOMAIN,
-  // projectId: process.env.PID,
-  // storageBucket:process.env.STORAGEBUCKET, 
-  // messagingSenderId: process.env.MSID,
-  // appId: process.env.APPID,
-  // measurementId: process.env.MID
-  apiKey: "AIzaSyBsakMmsEINu4oztWc16Se1numkZl4xJJw",
-  authDomain: "newchitchat-f5f7f.firebaseapp.com",
-  projectId: "newchitchat-f5f7f",
-  storageBucket: "newchitchat-f5f7f.appspot.com",
-  messagingSenderId: "928364777419",
-  appId: "1:928364777419:web:c5f5acbe357a2fca2b304e",
-  measurementId: "G-0XT2CZBJP8"
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PID,
+  storageBucket:process.env.REACT_APP_STORAGEBUCKET, 
+  messagingSenderId: process.env.REACT_APP_MSID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MID
 };
 
 export const app = initializeApp(firebaseConfig);
