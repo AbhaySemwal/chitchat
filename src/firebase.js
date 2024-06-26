@@ -4,6 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import {getStorage} from "firebase/storage";
 
 const firebaseConfig = {
+  // apiKey: process.env.APIKEY,
+  // authDomain: process.env.AUTHDOMAIN,
+  // projectId: process.env.PID,
+  // storageBucket:process.env.STORAGEBUCKET, 
+  // messagingSenderId: process.env.MSID,
+  // appId: process.env.APPID,
+  // measurementId: process.env.MID
   apiKey: "AIzaSyBsakMmsEINu4oztWc16Se1numkZl4xJJw",
   authDomain: "newchitchat-f5f7f.firebaseapp.com",
   projectId: "newchitchat-f5f7f",
